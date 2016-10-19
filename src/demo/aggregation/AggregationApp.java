@@ -13,7 +13,8 @@ import demo.common.log.LoggingUtils;
 public class AggregationApp {
 
 	public static void main(String[] args) {
-        String srcFile = new File(".").getAbsolutePath() + "\\testSample.txt";
+        //String srcFile = new File(".").getAbsolutePath() + "\\testSample.txt";
+        String srcFile = new File(".").getAbsolutePath() + "\\errorTest.txt";
         String dstFile = new File(".").getAbsolutePath() + "\\resultSample.txt";
         
         // Initialize the LoggingUtils

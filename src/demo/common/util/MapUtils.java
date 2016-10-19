@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class MapUtils {
 	public static Map<String, Integer> addRecord(Map<String, Integer> map, String key, Integer value) {
-        if (map.containsKey(key.trim())) {
-            Integer newValue = map.get(key.trim()) + value;
-            map.put(key.trim(), newValue);
+        if (map.containsKey(key)) {
+            Integer newValue = map.get(key) + value;
+            map.put(key, newValue);
         } else {
-            map.put(key.trim(), value);
+            map.put(key, value);
         }
         return map;
     }
