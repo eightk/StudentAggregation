@@ -33,11 +33,11 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 			} else {
 				String rowValue = sb.toString();
 				String[] rowParts = rowValue.split("\t");
-				LoggingUtils.logInfo(StudentAggregationDriver.class, "Input value: " + rowValue + " with " + rowParts.length + " sections.");
+				LoggingUtils.logInfo(StudentAggregationDriver.class, "Input value: " + rowValue + "\n with " + rowParts.length + " sections.");
 				if (rowParts.length != 4) {
 					LoggingUtils.logInfo(StudentAggregationDriver.class,
-							"Illegal Input value: '" + rowValue
-									+ "' Should have 4 sections.");
+							"Illegal Input value: " + rowValue
+									+ "\n Should have 4 sections.");
 				} else {
 					String pattern = "(^[k-kK-K1-8]{1})(\\d{4})$";
 					if (!ValidationUtils.matchPattern(rowParts[3], pattern)) {
@@ -46,8 +46,8 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 										StudentAggregationDriver.class,
 										"Last section '"
 												+ rowParts[3]
-												+ "' does not have proper format: the length should be exactly 5, "
-												+ "the first letter should be either 'k' or 1-8, "
+												+ "' does not have proper format:\n the length should be exactly 5, "
+												+ "the first letter should be either 'k' or 1-8 "
 												+ "and the next 4 digits should all be number.");
 						sb = new StringBuffer();
 						continue;
@@ -95,8 +95,6 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 		MapUtils.writeResult(cityMapping, out);
 		MapUtils.writeResult(schoolMapping, out);
 		MapUtils.writeResult(gradeMapping, out);
-		// no need to call flush explicitly for outputFile - the close()
-		// method will first call flush before closing the outputFile stream
 	}
 
 }
