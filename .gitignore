@@ -2,4 +2,6 @@
 /bin/
 *.log
 *.class
-/bin/
+/.metadata
+/.settings
+/.git

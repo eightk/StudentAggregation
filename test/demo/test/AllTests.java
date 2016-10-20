@@ -4,6 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import demo.aggregation.driver.StudentAggregationDriverErrorTest;
+import demo.aggregation.driver.StudentAggregationDriverSuccessTest;
 import demo.common.util.ValidationTest;
 
 /**
@@ -13,7 +15,7 @@ import demo.common.util.ValidationTest;
  *
  */
 @RunWith(Suite.class)
-@SuiteClasses({ ValidationTest.class })
+@SuiteClasses({ ValidationTest.class, StudentAggregationDriverSuccessTest.class, StudentAggregationDriverErrorTest.class })
 public class AllTests {
 
 }

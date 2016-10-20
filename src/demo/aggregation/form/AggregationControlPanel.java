@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import demo.aggregation.driver.StudentAggregationDriver;
 import demo.common.driver.AggregationDriver;
@@ -145,7 +146,12 @@ public class AggregationControlPanel extends JPanel {
 
 	/* Run the aggregation */
 	private void aggregateBtnActionPerformed(ActionEvent e) {
-		model.aggregate();
+		boolean result = model.aggregate();
+		if(result) {
+			JOptionPane.showMessageDialog(this, "Aggregation Success.");
+		} else {
+			JOptionPane.showMessageDialog(this, "Aggregation Failed.");
+		}
 	}
 
 	/* Close the UI and release the resources */

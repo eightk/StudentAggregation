@@ -24,5 +24,5 @@ public interface AggregationModel<T extends AggregationDriver> {
 
 	public T getAggregationDriver();
 
-	public void aggregate();
+	public boolean aggregate();
 }

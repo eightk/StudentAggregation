@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import demo.aggregation.driver.StudentAggregationDriver;
+import demo.aggregation.model.StudentAggregationModel;
 import demo.common.log.LoggingUtils;
 import demo.common.util.FileUtils;
 
@@ -23,8 +24,8 @@ public class AggregationApp {
 	public static void main(String[] args) {
 		// Initialize the LoggingUtils
 		LoggingUtils.initializeLogger();
-		String srcFile = new File(".").getAbsolutePath() + "\\input\\testSample3.txt";
-		String dstFile = new File(".").getAbsolutePath() + "\\output\\result-testSample3.txt";
+		String srcFile = new File(".").getAbsolutePath() + "\\input\\testSample1.txt";
+		String dstFile = new File(".").getAbsolutePath() + "\\output\\result-testSample1.txt";
 		
 		FileUtils.mkdirs(srcFile);
 		FileUtils.mkdirs(dstFile);
@@ -41,13 +42,17 @@ public class AggregationApp {
 			// getting the input from file and generating the results as output
 			Map<String, Map> aggregateResult = StudentAggregationDriver.getDefault().aggregateRecords(in);
 			// based on the result from the input aggregation, print the output
-			StudentAggregationDriver.getDefault().generateResultFile(aggregateResult, out);
+			if (aggregateResult != null) {
+				StudentAggregationDriver.getDefault().generateResultFile(aggregateResult, out);
+				LoggingUtils.logInfo(StudentAggregationModel.class, "Aggregation success.");
+			} else {
+				LoggingUtils.logInfo(StudentAggregationModel.class, "Aggregation Failed.");
+			}
 		} catch (FileNotFoundException fnfe) {
 			LoggingUtils.logError(fnfe,
 					"Cannot open file: " + fnfe.getMessage());
 		} catch (IOException ioe) {
 			LoggingUtils.logError(ioe, ioe.getMessage());
 		}
-		LoggingUtils.logInfo(AggregationApp.class, "Aggregation App finish.");
 	}
 }
