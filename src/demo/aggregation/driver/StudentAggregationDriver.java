@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.util.Hashtable;
 import java.util.Map;
 
+import demo.common.driver.AbstractAggregationDriver;
 import demo.common.log.LoggingUtils;
 import demo.common.util.MapUtils;
 import demo.common.util.ValidationUtils;
@@ -20,10 +21,10 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 	public void aggregateRecords(InputStream in, OutputStream out)
 			throws IOException {
 		int ch = 0;// characters to read
-		Map<String, Integer> provinceMapping = new Hashtable();
-		Map<String, Integer> cityMapping = new Hashtable();
-		Map<String, Integer> schoolMapping = new Hashtable();
-		Map<String, Integer> gradeMapping = new Hashtable();
+		Map<String, Integer> provinceMapping = new Hashtable<String, Integer>();
+		Map<String, Integer> cityMapping = new Hashtable<String, Integer>();
+		Map<String, Integer> schoolMapping = new Hashtable<String, Integer>();
+		Map<String, Integer> gradeMapping = new Hashtable<String, Integer>();
 
 		StringBuffer sb = new StringBuffer();
 
@@ -85,6 +86,7 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 				}
 				sb = new StringBuffer();
 			}
+			//Have to stop the loop after the last
 			if(ch==-1) {
 				break;
 			}

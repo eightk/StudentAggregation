@@ -1,4 +1,4 @@
-package demo.aggregation.driver;
+package demo.common.driver;
 
 import java.io.IOException;
 import java.io.InputStream;

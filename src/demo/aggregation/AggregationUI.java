@@ -1,12 +1,16 @@
 package demo.aggregation;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import demo.aggregation.form.AggregationControlPanel;
+import demo.aggregation.model.StudentAggregationModel;
+import demo.common.log.LoggingUtils;
 
 public class AggregationUI {
-
-	private JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -15,8 +19,9 @@ public class AggregationUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AggregationUI window = new AggregationUI();
+					AggregationUI window = new AggregationUI();					
 					window.frame.setVisible(true);
+					window.controlPanel.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,9 +40,18 @@ public class AggregationUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		LoggingUtils.initializeLogger();
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 543, 135);
+
+		controlPanel = new AggregationControlPanel();
+		controlPanel.setModel(new StudentAggregationModel());
+		frame.getContentPane().add(controlPanel, BorderLayout.CENTER);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);			
 	}
+	
+	private JFrame frame;
+	private AggregationControlPanel controlPanel;
 
 }
