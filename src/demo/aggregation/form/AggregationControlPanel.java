@@ -27,6 +27,17 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.BoxLayout;
 
+/**
+ * The user interface used by the main UI.
+ * It contains filters for driver and input file name
+ * Aggregate button is used to generate the output file
+ * Close button is used to close the panel and all the wrappers.
+ * AggregationModel: model for the UI, it stores the necessary filter informations
+ * drivers: the list of all the drivers can be used, there is only one right now
+ * TODO: Use the JFileChooser to select the input file and output file
+ * 
+ * @author richardl
+ */
 public class AggregationControlPanel extends JPanel {
 
 	/**
@@ -101,12 +112,14 @@ public class AggregationControlPanel extends JPanel {
 		inputFilePanel.add(inputFileCB);
 	}
 
+	/* Set the driver list from outside */
 	public void setDrivers(Map<String, AggregationDriver> drivers) {
 		this.drivers.clear();
 		this.drivers.putAll(drivers);
 		updateDriverComboBox();
 	}
 
+	/* Once the drivers changed, update the driver combo box value*/
 	private void updateDriverComboBox() {
 		driverComboBox.removeAllItems();
 		for (String key : drivers.keySet()) {
@@ -114,6 +127,10 @@ public class AggregationControlPanel extends JPanel {
 		}
 	}
 
+	/**
+	 *  Hard coded 5 sample file name into the input file drop down,
+	 *  TODO: use JFileChooser to choose file
+	 */
 	private void initInputFileCB() {
 		inputFileCB.addItem("testSample1");
 		inputFileCB.addItem("testSample2");
@@ -122,15 +139,17 @@ public class AggregationControlPanel extends JPanel {
 		inputFileCB.addItem("testSample5");
 	}
 
+	/* Update the model, if selecting a different driver */
 	private void driverComboBoxActionPerformed(ActionEvent e) {
-		JComboBox cb = (JComboBox) e.getSource();
-		model.setAggregationDriver(drivers.get(cb.getSelectedItem()));
+		model.setAggregationDriver(drivers.get(driverComboBox.getSelectedItem()));
 	}
 
+	/* Run the aggregation */
 	private void aggregateBtnActionPerformed(ActionEvent e) {
 		model.aggregate();
 	}
 
+	/* Close the UI and release the resources */
 	private void closeBtnActionPerformed(ActionEvent e) {
 		Container scanner = this.getParent();
 		while (scanner != null) {
@@ -148,6 +167,7 @@ public class AggregationControlPanel extends JPanel {
 		}
 	}
 
+	/* update the model if selecting a different input file */
 	private void inputFileCBActionPerformed(ActionEvent e) {
 		model.setInputFileName(FileUtils.getAbsolutePath() + "\\input\\"
 				+ inputFileCB.getSelectedItem() + ".txt");
@@ -155,6 +175,7 @@ public class AggregationControlPanel extends JPanel {
 				+ "\\output\\result-" + inputFileCB.getSelectedItem() + ".txt");
 	}
 
+	/* Set the model from outside and do the basic model initialization based on UI filters */
 	public void setModel(AggregationModel model) {
 		this.model = model;
 		model.setAggregationDriver(drivers.get(driverComboBox.getSelectedItem()));
@@ -176,6 +197,5 @@ public class AggregationControlPanel extends JPanel {
 	private JPanel NorthPanel;
 
 	private AggregationModel model;
-	private File previousFile;
 	private final Map<String, AggregationDriver> drivers = new TreeMap<>();
 }

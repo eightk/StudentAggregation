@@ -6,7 +6,12 @@ import org.junit.Test;
 
 import demo.common.util.ValidationUtils;
 
-
+/**
+ * Test whether the default pattern works fine for different grade+number input values
+ * 
+ * @author richardl
+ *
+ */
 public class ValidationTest {
 
 	@Before

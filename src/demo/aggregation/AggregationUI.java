@@ -10,6 +10,12 @@ import demo.aggregation.form.AggregationControlPanel;
 import demo.aggregation.model.StudentAggregationModel;
 import demo.common.log.LoggingUtils;
 
+/**
+ * This is the main method with simple user interfaces. User can select the input from 5 preset source files from input folder.
+ * Then the form will generate the corresponding output file in output folder.
+ *  
+ * @author $Author: richardl $
+ */
 public class AggregationUI {
 
 	/**

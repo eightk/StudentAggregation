@@ -2,6 +2,13 @@ package demo.common.log;
 
 import org.apache.log4j.Level;
 
+/**
+ * The model for LoggingUtils, used to set the log information format, 
+ * default logging level, log file name and maximum file size
+ * 
+ * @author richardl
+ *
+ */
 public class LoggingSetting {
 	public static LoggingSetting getDefault() {
         LoggingSetting setting = new LoggingSetting();

@@ -2,6 +2,14 @@ package demo.common.model;
 
 import demo.common.driver.AggregationDriver;
 
+/**
+ * The abstract class of aggregation model.
+ * Implements the getter and setter for input/output file and driver
+ * 
+ * @author richardl
+ *
+ * @param <T> must be child of AggregationDriver
+ */
 public abstract class AbstractAggregationModel<T extends AggregationDriver>
 		implements AggregationModel<AggregationDriver> {
 

@@ -6,12 +6,20 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 
 import demo.common.driver.AggregationDriver;
 import demo.common.log.LoggingUtils;
 import demo.common.model.AbstractAggregationModel;
 import demo.common.util.FileUtils;
 
+/**
+ * The concrete model for AggregationControlPanel.
+ * Run the aggregation for the driver.
+ * 
+ * @author richardl
+ *
+ */
 public class StudentAggregationModel extends
 		AbstractAggregationModel<AggregationDriver> {
 
@@ -34,7 +42,8 @@ public class StudentAggregationModel extends
 					new FileInputStream(getInputFileName()));
 					BufferedOutputStream out = new BufferedOutputStream(
 							new FileOutputStream(getOutputFileName()))) {
-				getAggregationDriver().aggregateRecords(in, out);
+				Map<String, Map> aggregateResult = getAggregationDriver().aggregateRecords(in);
+				getAggregationDriver().generateResultFile(aggregateResult, out);
 			} catch (FileNotFoundException fnfe) {
 				LoggingUtils.logError(fnfe,
 						"Cannot open file: " + fnfe.getMessage());

@@ -4,6 +4,13 @@ import java.io.IOException;
 
 import demo.common.driver.AggregationDriver;
 
+/**
+ * The interface of AggregationModel
+ * 
+ * @author richardl
+ *
+ * @param <T> must be child of AggregationDriver
+ */
 public interface AggregationModel<T extends AggregationDriver> {
 	public void setInputFileName(String inputFileName);
 
