@@ -4,9 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import org.apache.log4j.Level;
 
 import demo.aggregation.form.AggregationControlPanel;
 import demo.aggregation.model.StudentAggregationModel;

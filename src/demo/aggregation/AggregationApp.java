@@ -11,6 +11,7 @@ import java.util.Map;
 
 import demo.aggregation.driver.StudentAggregationDriver;
 import demo.common.log.LoggingUtils;
+import demo.common.util.FileUtils;
 
 /**
  * This is the main method for getting the input from srcFile then generating the output in dstFile
@@ -24,6 +25,9 @@ public class AggregationApp {
 		LoggingUtils.initializeLogger();
 		String srcFile = new File(".").getAbsolutePath() + "\\input\\testSample3.txt";
 		String dstFile = new File(".").getAbsolutePath() + "\\output\\result-testSample3.txt";
+		
+		FileUtils.mkdirs(srcFile);
+		FileUtils.mkdirs(dstFile);
 		
 		LoggingUtils.logInfo(AggregationApp.class, "Aggregation App start.");
 		LoggingUtils.logInfo(AggregationApp.class, "Input File: " + srcFile);

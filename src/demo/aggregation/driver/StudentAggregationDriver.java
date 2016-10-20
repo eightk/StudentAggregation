@@ -11,6 +11,7 @@ import demo.common.log.LoggingUtils;
 import demo.common.util.MapUtils;
 import demo.common.util.ValidationUtils;
 
+
 /**
  * Method for handling Input as it is read in and printing output based on Input results.
  * The Logic based on the following assumptions:
@@ -69,9 +70,7 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 										StudentAggregationDriver.class,
 										"Last section '"
 												+ rowParts[3]
-												+ "' does not have proper format:\n the length should be exactly 5, "
-												+ "the first letter should be either 'k' or 1-8 "
-												+ "and the next 4 digits should all be number.");
+												+ "' does not have proper format");
 						sb = new StringBuffer();
 						continue;
 					}
