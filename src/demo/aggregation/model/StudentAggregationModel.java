@@ -10,6 +10,7 @@ import java.io.IOException;
 import demo.common.driver.AggregationDriver;
 import demo.common.log.LoggingUtils;
 import demo.common.model.AbstractAggregationModel;
+import demo.common.util.FileUtils;
 
 public class StudentAggregationModel extends
 		AbstractAggregationModel<AggregationDriver> {
@@ -22,11 +23,13 @@ public class StudentAggregationModel extends
 					+ getInputFileName());
 			LoggingUtils.logInfo(StudentAggregationModel.class, "Output File: "
 					+ getOutputFileName());
+			FileUtils.mkdirs(getInputFileName());
+			FileUtils.mkdirs(getOutputFileName());
+			
 			// try opening the source and destination file
 			// with BufferedInputSteam and BufferedOutputStream
 			// try-with-resources will automatically release FileReader object
-			// these
-			// two objects
+			// these two objects
 			try (BufferedInputStream in = new BufferedInputStream(
 					new FileInputStream(getInputFileName()));
 					BufferedOutputStream out = new BufferedOutputStream(

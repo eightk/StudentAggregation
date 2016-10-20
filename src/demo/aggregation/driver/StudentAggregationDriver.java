@@ -34,11 +34,11 @@ public class StudentAggregationDriver extends AbstractAggregationDriver {
 			} else {
 				String rowValue = sb.toString();
 				String[] rowParts = rowValue.split("\t");
-				LoggingUtils.logInfo(StudentAggregationDriver.class, "Input value: " + rowValue + "\n with " + rowParts.length + " sections.");
+				LoggingUtils.logInfo(StudentAggregationDriver.class, "Input value: '" + rowValue.trim() + "' with " + rowParts.length + " sections.");
 				if (rowParts.length != 4) {
 					LoggingUtils.logInfo(StudentAggregationDriver.class,
-							"Illegal Input value: " + rowValue
-									+ "\n Should have 4 sections.");
+							"Illegal Input value: '" + rowValue.trim()
+									+ "' Should have 4 sections.");
 				} else {
 					String pattern = "(^[k-kK-K1-8]{1})(\\d{4})$";
 					if (!ValidationUtils.matchPattern(rowParts[3], pattern)) {

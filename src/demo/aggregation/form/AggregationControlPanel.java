@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import demo.aggregation.driver.StudentAggregationDriver;
 import demo.common.driver.AggregationDriver;
 import demo.common.model.AggregationModel;
+import demo.common.util.FileUtils;
 
 import java.io.File;
 import java.util.Map;
@@ -148,18 +149,18 @@ public class AggregationControlPanel extends JPanel {
 	}
 
 	private void inputFileCBActionPerformed(ActionEvent e) {
-		model.setInputFileName(new File(".").getAbsolutePath() + "\\input\\"
+		model.setInputFileName(FileUtils.getAbsolutePath() + "\\input\\"
 				+ inputFileCB.getSelectedItem() + ".txt");
-		model.setOutputFileName(new File(".").getAbsolutePath()
+		model.setOutputFileName(FileUtils.getAbsolutePath()
 				+ "\\output\\result-" + inputFileCB.getSelectedItem() + ".txt");
 	}
 
 	public void setModel(AggregationModel model) {
 		this.model = model;
 		model.setAggregationDriver(drivers.get(driverComboBox.getSelectedItem()));
-		model.setInputFileName(new File(".").getAbsolutePath() + "\\input\\"
+		model.setInputFileName(FileUtils.getAbsolutePath() + "\\input\\"
 				+ inputFileCB.getSelectedItem() + ".txt");
-		model.setOutputFileName(new File(".").getAbsolutePath()
+		model.setOutputFileName(FileUtils.getAbsolutePath()
 				+ "\\output\\result-" + inputFileCB.getSelectedItem() + ".txt");
 	}
 
