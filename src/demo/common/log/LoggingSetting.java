@@ -10,6 +10,10 @@ import org.apache.log4j.Level;
  *
  */
 public class LoggingSetting {
+	
+	private LoggingSetting() {
+	}
+	
 	public static LoggingSetting getDefault() {
         LoggingSetting setting = new LoggingSetting();
         setting.setPattern("%d{ISO8601} [%c] %p - %m%n");

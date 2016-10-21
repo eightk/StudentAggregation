@@ -26,6 +26,9 @@ import demo.common.util.ValidationUtils;
  */
 public class StudentAggregationDriver extends AbstractAggregationDriver {
 
+	private StudentAggregationDriver() {
+	}
+	
 	public static StudentAggregationDriver getDefault() {
 		return new StudentAggregationDriver();
 	}
